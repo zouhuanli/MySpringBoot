@@ -1,6 +1,6 @@
 package com.homura.myspringboot.dao;
 
-import com.homura.myspringboot.entity.User;
+import com.homura.myspringboot.entity.pojo.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

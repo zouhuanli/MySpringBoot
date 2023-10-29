@@ -1,7 +1,7 @@
 package com.homura.myspringboot.service;
 
 import com.homura.myspringboot.dao.UserMapper;
-import com.homura.myspringboot.entity.User;
+import com.homura.myspringboot.entity.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

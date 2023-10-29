@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
     <Properties>
-        <Property name="APP">springmvcdemo</Property>
+        <Property name="APP">springbootdemo</Property>
         <Property name="LOG_HOME">./logs</Property>
         <Property name="LOG_FILE">${APP}_console.log</Property>
         <Property name="ERROR_LOG">error.log</Property>
