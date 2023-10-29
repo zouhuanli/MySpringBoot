@@ -1,7 +1,7 @@
 package com.homura.myspringboot.controller;
 
 import com.homura.myspringboot.entity.base.ResponseResult;
-import com.homura.myspringboot.entity.pojo.User;
+import com.homura.myspringboot.entity.dvo.User;
 import com.homura.myspringboot.service.UserService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -41,5 +41,12 @@ public class UserController {
     public List<User> listAll() {
         LOGGER.info("listAll method");
         return userService.listAll();
+    }
+
+
+    @GetMapping("/get/{uid}")
+    public User getByUid(@PathVariable("uid") Integer uid) {
+        LOGGER.info("listAll method");
+        return userService.getByUid(uid);
     }
 }

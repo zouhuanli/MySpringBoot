@@ -1,11 +1,13 @@
 package com.homura.myspringboot.service;
 
 import com.homura.myspringboot.dao.UserMapper;
-import com.homura.myspringboot.entity.pojo.User;
+
+import com.homura.myspringboot.entity.dvo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 @Service
 public class UserService {
@@ -28,5 +30,16 @@ public class UserService {
      */
     public List<User> listAll() {
         return userMapper.findAll();
+    }
+
+
+    /**
+     * 按用户ID查询
+     *
+     * @param uid
+     * @return
+     */
+    public User getByUid(Integer uid) {
+        return userMapper.selectByPrimaryKey(uid);
     }
 }

@@ -1,31 +1,55 @@
 package com.homura.myspringboot.dao;
 
-import com.homura.myspringboot.entity.pojo.User;
+
+import com.homura.myspringboot.entity.dvo.User;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.type.JdbcType;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
+@Mapper
 @Repository
-public class UserMapper {
-    //示例DAO层，还未使用数据库和mybatis。有并发问题
-    private final List<User> userList = new ArrayList<>();
-
+public interface UserMapper {
     /**
-     * 添加
-     *
-     * @param user
-     */
-    public void save(User user) {
-        userList.add(user);
-    }
-
-    /**
-     * 查找全部
+     * 查找全部用户
+     * <p>
+     * 不要使用 select  *
      *
      * @return
      */
-    public List<User> findAll() {
-        return userList;
-    }
+    @Select("select * from user")
+    @ResultMap("BaseResultMap")
+    List<User> findAll();
+
+    /**
+     * 添加用户
+     *
+     * @param user 用户
+     * @return
+     */
+    @Insert(" insert  into user (uid,uname,password,gender,phone,email,address) " +
+            " values " +
+            " (#{user.uid},#{user.uname},#{user.password},#{user.gender},#{user.phone},#{user.email},#{user.address})")
+    @ResultType(int.class)
+    int save(@Param("user") User user);
+
+
+    /**
+     * 根据id查询用户
+     * 不要使用 select  *
+     *
+     * @param uid 用户id
+     * @return
+     */
+    @Select("select * from user where uid = #{uid}")
+    @Results(id = "BaseResultMapByAnnotation", value =
+            {@Result(id = true, property = "uid", column = "uid", jdbcType = JdbcType.INTEGER)
+                    , @Result(property = "uname", column = "uname", jdbcType = JdbcType.VARCHAR)
+                    , @Result(property = "password", column = "password", jdbcType = JdbcType.VARCHAR)
+                    , @Result(property = "gender", column = "gender", jdbcType = JdbcType.VARCHAR)
+                    , @Result(property = "phone", column = "phone", jdbcType = JdbcType.VARCHAR)
+                    , @Result(property = "email", column = "email", jdbcType = JdbcType.VARCHAR)
+                    , @Result(property = "address", column = "address", jdbcType = JdbcType.VARCHAR)})
+    User selectByPrimaryKey(@Param("uid") Integer uid);
 }
