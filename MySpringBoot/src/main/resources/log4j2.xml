@@ -5,7 +5,7 @@
         <Property name="LOG_HOME">./logs</Property>
         <Property name="LOG_FILE">${APP}_console.log</Property>
         <Property name="ERROR_LOG">error.log</Property>
-        <Property name="LOG_LEVEL">TRACE</Property>
+        <Property name="LOG_LEVEL">INFO</Property>
         <Property name="LOG_PATTERN">%d|%-5p|%24F:%-4L|%t|%m%n</Property>
     </Properties>
     <Appenders>
