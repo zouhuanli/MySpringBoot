@@ -5,6 +5,7 @@ import com.homura.myspringboot.dao.UserMapper;
 import com.homura.myspringboot.entity.dvo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,8 +20,11 @@ public class UserService {
      *
      * @param user
      */
+    @Transactional
     public void add(User user) {
         userMapper.save(user);
+        userMapper.findAll();
+        userMapper.getUserList();
     }
 
     /**
