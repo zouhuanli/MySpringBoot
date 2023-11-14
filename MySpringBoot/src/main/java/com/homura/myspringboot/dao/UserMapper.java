@@ -51,4 +51,14 @@ public interface UserMapper {
                     , @Result(property = "email", column = "email", jdbcType = JdbcType.VARCHAR)
                     , @Result(property = "address", column = "address", jdbcType = JdbcType.VARCHAR)})
     User selectByPrimaryKey(@Param("uid") Integer uid);
+
+
+    /**
+     * 查找全部用户
+     * <p>
+     * 不要使用 select  *
+     *
+     * @return
+     */
+    List<User> getUserList();
 }
