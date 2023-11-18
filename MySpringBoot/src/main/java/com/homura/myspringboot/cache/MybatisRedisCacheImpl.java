@@ -17,14 +17,13 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * 使用redis简单实现mybatis的二级缓存
  * Created by homura on 2023/11/18.
  */
-@Component
+
 public class MybatisRedisCacheImpl implements Cache {
     private static final Logger LOGGER = LoggerFactory.getLogger(MybatisRedisCacheImpl.class);
     private static final ReadWriteLock LOCK = new ReentrantReadWriteLock();
     private static final int EXPIRE_TIME_IN_MINUTES = 30;
     private final String id;
     private static RedisTemplate<String, Object> redisTemplate;
-
     /**
      * 注意这里注入是静态变量
      *
@@ -33,8 +32,7 @@ public class MybatisRedisCacheImpl implements Cache {
     public static void setRedisTemplate(RedisTemplate<String, Object> redisTemplate) {
         MybatisRedisCacheImpl.redisTemplate = redisTemplate;
     }
-
-    public MybatisRedisCacheImpl(@Autowired @Qualifier("mybatisCacheId") String id) {
+    public MybatisRedisCacheImpl( String id) {
         this.id = id;
     }
 
