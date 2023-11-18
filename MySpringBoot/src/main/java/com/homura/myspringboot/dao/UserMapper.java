@@ -62,4 +62,13 @@ public interface UserMapper {
      * @return
      */
     List<User> getUserList();
+
+    /**
+     * 删除用户
+     * @param user
+     * @return
+     */
+    @Delete("delete from user where uid = #{user.uid} limit  1")
+    @ResultType(int.class)
+    int deleteUser(@Param("user") User user);
 }

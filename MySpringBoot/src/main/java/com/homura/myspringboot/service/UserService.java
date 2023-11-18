@@ -24,7 +24,11 @@ public class UserService {
     public void add(User user) {
         userMapper.save(user);
         userMapper.findAll();
-        userMapper.getUserList();
+        userMapper.findAll();
+        userMapper.findAll();
+        userMapper.deleteUser(user);
+
+        userMapper.save(user);
     }
 
     /**
@@ -32,8 +36,12 @@ public class UserService {
      *
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     public List<User> listAll() {
-        return userMapper.findAll();
+        List<User> list = userMapper.findAll();
+        userMapper.findAll();
+        userMapper.findAll();
+        return list;
     }
 
 
