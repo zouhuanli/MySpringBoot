@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
+@CacheNamespace(implementation = com.homura.myspringboot.cache.MybatisRedisCacheImpl.class, eviction = com.homura.myspringboot.cache.MybatisRedisCacheImpl.class)
 public interface UserMapper {
     /**
      * 查找全部用户

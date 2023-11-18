@@ -20,5 +20,8 @@ mybatis:
   mapper-locations: classpath:mappers/*.xml
   configuration:
     cache-enabled: true
+    cache-impl: com.homura.myspringboot.cache.MybatisRedisCacheImpl
     use-generated-keys: false
     default-executor-type: simple
+    log-prefix: MYBATIS
+    local-cache-scope: session
