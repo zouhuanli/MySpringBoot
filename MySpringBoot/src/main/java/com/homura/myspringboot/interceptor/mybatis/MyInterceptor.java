@@ -19,7 +19,7 @@ import java.util.Properties;
         args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})})
 public class MyInterceptor implements Interceptor {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(com.homura.myspringboot.interceptor.mybatis.ExamplePlugin.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MyInterceptor.class);
     private Properties properties = new Properties();
 
     @Override
