@@ -1,6 +1,8 @@
 package com.homura.myspringboot.config;
 
 import com.homura.myspringboot.interceptor.mybatis.ExamplePlugin;
+import com.homura.myspringboot.interceptor.mybatis.MyInterceptor;
+import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.boot.autoconfigure.ConfigurationCustomizer;
 import org.springframework.context.annotation.AdviceMode;
@@ -22,6 +24,8 @@ public class MyBatisConfig {
             // 注册拦截器
             ExamplePlugin examplePlugin = new ExamplePlugin();
             configuration.addInterceptor(examplePlugin);
+            MyInterceptor myInterceptor = new MyInterceptor();
+            configuration.addInterceptor(myInterceptor);
         };
     }
 }

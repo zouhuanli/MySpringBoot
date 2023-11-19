@@ -1,8 +1,6 @@
 package com.homura.myspringboot.interceptor.mybatis;
 
-import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.Executor;
-import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Intercepts;
@@ -15,25 +13,22 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
-
-/**
- * 示例拦截器，来自mybatis官网
- */
 @Intercepts({@Signature(
         type = Executor.class,
         method = "query",
         args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})})
-public class ExamplePlugin implements Interceptor {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ExamplePlugin.class);
+public class MyInterceptor implements Interceptor {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(com.homura.myspringboot.interceptor.mybatis.ExamplePlugin.class);
     private Properties properties = new Properties();
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         // implement pre processing if need
-        LOGGER.info("ExamplePlugin intercept preprocessing");
+        LOGGER.info("MyInterceptor intercept preprocessing");
         Object returnObject = invocation.proceed();
         // implement post processing if need
-        LOGGER.info("ExamplePlugin intercept postprocessing");
+        LOGGER.info("MyInterceptor intercept postprocessing");
         return returnObject;
     }
 
@@ -42,3 +37,4 @@ public class ExamplePlugin implements Interceptor {
         this.properties = properties;
     }
 }
+

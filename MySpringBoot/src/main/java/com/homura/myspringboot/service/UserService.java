@@ -1,5 +1,6 @@
 package com.homura.myspringboot.service;
 
+import com.github.pagehelper.PageHelper;
 import com.homura.myspringboot.dao.UserMapper;
 
 import com.homura.myspringboot.entity.dvo.User;
@@ -38,6 +39,8 @@ public class UserService {
      */
     @Transactional(rollbackFor = Exception.class)
     public List<User> listAll() {
+        //仅供测试
+        PageHelper.startPage(2, 5);
         List<User> list = userMapper.findAll();
         userMapper.findAll();
         userMapper.findAll();
