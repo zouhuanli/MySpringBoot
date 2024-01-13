@@ -22,7 +22,7 @@
         <spring.boot.version>3.2.1</spring.boot.version>
         <guawa.version>32.1.2-jre</guawa.version>
         <mysql-connector.version>8.0.33</mysql-connector.version>
-        <mybatis-spring-boot-starter.version>3.0.2</mybatis-spring-boot-starter.version>
+        <mybatis-spring-boot-starter.version>3.0.3</mybatis-spring-boot-starter.version>
     </properties>
     <dependencies>
         <dependency>
@@ -91,7 +91,7 @@
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>2.0.0</version>
+            <version>2.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
